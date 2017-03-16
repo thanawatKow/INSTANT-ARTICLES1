@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="canonical" href="Add Your Artices URL Here">
+<link rel="canonical" href="https://instantarticles.herokuapp.com/">
 <meta charset="utf-8">
 <meta property="fb:pages" content="1920957664803342" />
 <meta property="op:generator" content="facebook-instant-articles-sdk-php">
