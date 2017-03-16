@@ -2,6 +2,7 @@
 <head>
 <link rel="canonical" href="Add Your Artices URL Here">
 <meta charset="utf-8">
+<meta property="fb:pages" content="1920957664803342" />
 <meta property="op:generator" content="facebook-instant-articles-sdk-php">
 <meta property="op:generator:version" content="1.1.0">
 <meta property="op:generator:application" content="facebook-instant-articles-wp">
