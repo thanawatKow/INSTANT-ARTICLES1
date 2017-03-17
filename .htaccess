@@ -1,8 +1,0 @@
-< IfModule mod_rewrite.c>
-RewriteEngine On
-
-RewriteCond  % {REQUEST_FILENAME}  ! -f
-RewriteCond  % {REQUEST_FILENAME}  ! -d
-RewriteCond  $ 1  ! ^ (Index \ .php | public | images | robots \ .txt | css)
-RewriteRule  ^ (. *) $  Index.php / $ 1  [L]
-</ IfModule >
