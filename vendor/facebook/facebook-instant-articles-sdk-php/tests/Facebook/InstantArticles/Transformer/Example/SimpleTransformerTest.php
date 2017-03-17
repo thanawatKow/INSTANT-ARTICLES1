@@ -29,7 +29,8 @@ use Facebook\InstantArticles\Elements\InstantArticle;
         $instant_article->addMetaProperty('op:generator:transformer:version', '1.0.0');
         $result = $instant_article->render('', true)."\n";
         $expected = file_get_contents(__DIR__ . '/simple-ia.html');
-
+        echo "sdfaf";
+        print_r($result);
         //var_dump($result);
         // print_r($warnings);
         //$this->assertEquals($expected, $result);
