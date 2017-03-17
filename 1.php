@@ -28,9 +28,9 @@ $the_html = '<!doctype html>
 </html>';
 
  $fb = Client::create(
-    'APP_ID',
-    'APP_SECRET',
-    'ACCESS_TOKEN',
+    '1335396193222019',
+    '45cb6b14299eafb282bdf42f4315ea33',
+    'EAACEdEose0cBAPXWhCFHglBEKeg7CRURbHgkNsIojSOLW5FZAdHnZBbTGTZAr6AO0EjgsimSL4zRGQqoUqfFlo7gvpweFZBQIStt2ZCJiTAKwHMZCqjec47fq62scGLQf6WR7rcaS1NsleEjWOC6sx3lOoS9hAGnC7Whnh2wnnArsl5JbkyqV8Yq9GP4QTrBYZD',
     '1920957664803342',
      true //development env
  );
