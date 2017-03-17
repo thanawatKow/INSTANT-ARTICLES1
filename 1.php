@@ -1,7 +1,8 @@
 <?php
+
 namespace Facebook\InstantArticles\Transformer;
 require_once('vendor/autoload.php');
-
+ini_set('display_errors', 1);
 use Facebook\InstantArticles\Elements\InstantArticle;
 use Facebook\InstantArticles\Client\Client;
 $the_html = '<!doctype html>
@@ -35,7 +36,6 @@ $rules = file_get_contents( "simple-rules.json", true);
 $transformer = new Transformer();
 $transformer->loadRules($rules);
 $instant_article = InstantArticle::create();
-
 libxml_use_internal_errors(true);
 $document = new \DOMDocument();
 $document->loadHTML($the_html);
