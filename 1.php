@@ -1,47 +1,30 @@
 <?php
-
 namespace Facebook\InstantArticles\Transformer;
 require_once('vendor/autoload.php');
-ini_set('display_errors', 1);
 use Facebook\InstantArticles\Elements\InstantArticle;
 use Facebook\InstantArticles\Client\Client;
-$the_html = '<!doctype html>
-<html lang="en" prefix="op: http://media.facebook.com/op#">
-<head>
-  <meta charset="utf-8">
-  <meta property="op:markup_version" content="v1.0">
-  <link rel="canonical" href="http://myarticle">
-  <meta property="fb:article_style" content="default">
-</head>
-<body>
-  <article>
-    <header>
-      <h1> test title</h1>
-      <h2> test subtitle </h2>
-
-       <time class="op-published" dateTime="2016-06-20T08:00">June 17th 2016, 8:00 AM</time>
-      <time class="op-modified" dateTime="2016-06-20T08:00">June 17th 2016, 8:00 AM</time>
-
-      <p> Test test test </p>
-    </header>
-  </article>
-</body>
-</html>';
 
 
-
-
-
-$rules = file_get_contents( "simple-rules.json", true);
-$transformer = new Transformer();
-$transformer->loadRules($rules);
+// $app_access_token='EAACEdEose0cBAJZA0RMCQ7TtcCGyZByqqZARZBcruYRvKTdgxlfEZCzIYTMr5BIp2GXlsQZAB5mU7XqriABd9bbf5RtUNiPG24NC2uDiWwQs9ZAkQaddtzHSydwSZCxGjlWOEEC7RNp3WPzJpvN5YXnq3DlGOdnZAZCrwdA0gkZBfZCMomQrT79624ZCnNnFtX7C7eukZD';
+// $app_secret='45cb6b14299eafb282bdf42f4315ea33';
+// $appsecret_proof= hash_hmac('sha256', $app_access_token, $app_secret);
+$json_file = file_get_contents('simple-rules.json');
 $instant_article = InstantArticle::create();
+$transformer = new Transformer();
+$transformer->loadRules($json_file);
+$html_file = file_get_contents('simple.php');
 libxml_use_internal_errors(true);
 $document = new \DOMDocument();
-$document->loadHTML($the_html);
+$document->loadHTML($html_file);
 libxml_use_internal_errors(false);
-
 $transformer->transform($instant_article, $document);
-
-
+$instant_article->addMetaProperty('op:generator:version', '1.0.0');
+$instant_article->addMetaProperty('op:generator:transformer:version', '1.0.0');
+$result = $instant_article->render('', true)."\n";
+$transformer->transform($instant_article, $document);
+//$fb->importArticle($instant_article, true);
+$f = fopen('simple_test.php', 'w') or die("can't open file");
+fwrite($f,$result);
+//echo $result;
+//$fb->importArticle($instant_article, true);
 ?>
